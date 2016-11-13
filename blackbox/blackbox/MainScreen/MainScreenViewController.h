@@ -24,7 +24,7 @@ static const NSString *serviceName = @"RedQueenSample";
     NSString *keyData;
     NSMutableDictionary *updateItem;
     NSDictionary *queryDictionary;
-    
+    BOOL hasTouchId;
 }
 
 
@@ -37,5 +37,8 @@ static const NSString *serviceName = @"RedQueenSample";
 -(IBAction)btnStoreToKeyChainTapped:(id)sender;
 -(IBAction)btnGetFromKeyChainTapped:(id)sender;
 
+-(NSString *)getNibNameForInit;
+-(BOOL *)getTouchIdValue;
+-(NSString *)getKeyData;
 
 @end

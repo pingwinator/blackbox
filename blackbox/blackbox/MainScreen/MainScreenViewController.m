@@ -27,30 +27,8 @@
     if (self) {
 
         NSString *nibName;
-        
-        NSNumber *scrWidth = [NSNumber numberWithInteger:[[UIScreen mainScreen] bounds].size.height];
-        NSNumber *i5Width = [NSNumber numberWithInteger:568];
-        NSNumber *i6Width = [NSNumber numberWithInteger:667];
-        NSNumber *i6PWidth = [NSNumber numberWithInteger:736];
-        NSNumber *iPadProWidth = [NSNumber numberWithInteger:1366];
-        
-        NSString *xibEndsWith;
-        
-        if ([scrWidth isEqualToNumber:i5Width]){
-            xibEndsWith = @"_iPhone5";
-        }else if ([scrWidth isEqualToNumber:i6Width]){
-            xibEndsWith = @"_iPhone6";
-        }else if ([scrWidth isEqualToNumber:i6PWidth]){
-            xibEndsWith = @"_iPhone6plus";
-        }else if ([scrWidth isEqualToNumber:iPadProWidth]){
-            xibEndsWith = @"_iPadPro";
-        }else{
-            xibEndsWith = @"_iPad";
-        }
-        
-        nibName = [@"MainScreenViewController" stringByAppendingString:xibEndsWith];
 
-        NSLog(@"nibname is %@", nibName);
+        nibName = [self getNibNameForInit];
 
         self = [super initWithNibName:nibName bundle:nibBundleOrNil];
 
@@ -81,7 +59,7 @@
 
     [super viewDidAppear:animated];
 
-    BOOL hasTouchId = NO;
+    hasTouchId = NO;
 
     if ([LAContext class]) {
         LAContext *context = [LAContext new];
@@ -221,15 +199,15 @@
         [keychainItemData removeObjectForKey:(__bridge id)kSecClass];
 
         OSStatus initialWriteStatus = SecItemUpdate((__bridge CFDictionaryRef)updateItem, (__bridge CFDictionaryRef)keychainItemData);
-        NSLog(@"result secItemUpdated: %d", initialWriteStatus);
+        NSLog(@"result secItemUpdated: %d", (int)initialWriteStatus);
         
     }else{
 
         OSStatus initialWriteStatus = SecItemDelete((CFDictionaryRef) updateItem);
-        NSLog(@"result secItemDeleted: %d", initialWriteStatus);
+        NSLog(@"result secItemDeleted: %d", (int)initialWriteStatus);
         
         initialWriteStatus = SecItemAdd((__bridge CFDictionaryRef) updateItem, nil);
-        NSLog(@"result secItemAdded: %d", initialWriteStatus);
+        NSLog(@"result secItemAdded: %d", (int)initialWriteStatus);
 
     }
     
@@ -242,7 +220,7 @@
 
     OSStatus readDataStatus = SecItemCopyMatching((__bridge CFDictionaryRef) queryDictionary, (CFTypeRef *)&dictionaryRef);
     
-    NSLog(@"result readStatus: %d", readDataStatus);
+    NSLog(@"result readStatus: %d", (int)readDataStatus);
     
     if(readDataStatus == errSecSuccess){
 
@@ -251,8 +229,14 @@
         NSData *dataPassword = [dataPasswordDic objectForKey:(__bridge id)kSecValueData];
         NSString *password = [[NSString alloc] initWithData:dataPassword encoding:NSUTF8StringEncoding];
 
+        keyData = password;
+        
         NSLog(@"got stored value: %@", password);
 
+    }else{
+        
+        keyData = @"no password has been restored";
+        
     }
 
     NSLog(@"getting stored data completed");
@@ -394,6 +378,48 @@
      enqueueNotification:notification
      postingStyle:NSPostNow];
     
+}
+
+
+-(NSString *)getNibNameForInit{
+
+    NSNumber *scrWidth = [NSNumber numberWithInteger:[[UIScreen mainScreen] bounds].size.height];
+    NSNumber *i5Width = [NSNumber numberWithInteger:568];
+    NSNumber *i6Width = [NSNumber numberWithInteger:667];
+    NSNumber *i6PWidth = [NSNumber numberWithInteger:736];
+    NSNumber *iPadProWidth = [NSNumber numberWithInteger:1366];
+    
+    NSString *xibEndsWith;
+    
+    if ([scrWidth isEqualToNumber:i5Width]){
+        xibEndsWith = @"_iPhone5";
+    }else if ([scrWidth isEqualToNumber:i6Width]){
+        xibEndsWith = @"_iPhone6";
+    }else if ([scrWidth isEqualToNumber:i6PWidth]){
+        xibEndsWith = @"_iPhone6plus";
+    }else if ([scrWidth isEqualToNumber:iPadProWidth]){
+        xibEndsWith = @"_iPadPro";
+    }else{
+        xibEndsWith = @"_iPad";
+    }
+    
+    NSString *nibName = [@"MainScreenViewController" stringByAppendingString:xibEndsWith];
+    
+    NSLog(@"nibname is %@", nibName);
+
+    return nibName;    
+}
+
+
+-(BOOL *)getTouchIdValue{
+
+    return &(hasTouchId);
+}
+
+
+-(NSString *)getKeyData{
+
+    return keyData;
 }
 
 

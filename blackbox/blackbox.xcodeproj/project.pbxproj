@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F5C3643C1DD78747004B3A52 /* MainScreenViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F5C3643B1DD78747004B3A52 /* MainScreenViewControllerTests.m */; };
+		F5C364481DD7AB40004B3A52 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5C364461DD7AAF1004B3A52 /* XCTest.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F5CC37C11D829C4E009E7784 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CC37C01D829C4E009E7784 /* main.m */; };
 		F5CC37C41D829C4E009E7784 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5CC37C31D829C4E009E7784 /* AppDelegate.m */; };
 		F5CC37CC1D829C4E009E7784 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F5CC37CB1D829C4E009E7784 /* Assets.xcassets */; };
@@ -22,8 +24,22 @@
 		F5CC37EC1D831AA6009E7784 /* MainScreenViewController_iPhone6plus.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5CC37E81D831AA6009E7784 /* MainScreenViewController_iPhone6plus.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F5C3643E1DD78747004B3A52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F5CC37B41D829C4E009E7784 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F5CC37BB1D829C4E009E7784;
+			remoteInfo = blackbox;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		F50B1D2E1DC67B4000834A27 /* blackbox.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = blackbox.entitlements; sourceTree = "<group>"; };
+		F5C364391DD78747004B3A52 /* blackboxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = blackboxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5C3643B1DD78747004B3A52 /* MainScreenViewControllerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainScreenViewControllerTests.m; sourceTree = "<group>"; };
+		F5C3643D1DD78747004B3A52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5C364461DD7AAF1004B3A52 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		F5CC37BC1D829C4E009E7784 /* blackbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = blackbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5CC37C01D829C4E009E7784 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F5CC37C21D829C4E009E7784 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -45,6 +61,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F5C364361DD78747004B3A52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5C364481DD7AB40004B3A52 /* XCTest.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5CC37B91D829C4E009E7784 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -57,13 +81,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F5C3643A1DD78747004B3A52 /* blackboxTests */ = {
+			isa = PBXGroup;
+			children = (
+				F5C3643B1DD78747004B3A52 /* MainScreenViewControllerTests.m */,
+				F5C3643D1DD78747004B3A52 /* Info.plist */,
+			);
+			path = blackboxTests;
+			sourceTree = "<group>";
+		};
+		F5C364451DD7AAF1004B3A52 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5C364461DD7AAF1004B3A52 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F5CC37B31D829C4E009E7784 = {
 			isa = PBXGroup;
 			children = (
 				F5CC37E01D82D2D4009E7784 /* LocalAuthentication.framework */,
 				F5CC37DE1D82D2CD009E7784 /* Security.framework */,
 				F5CC37BE1D829C4E009E7784 /* blackbox */,
+				F5C3643A1DD78747004B3A52 /* blackboxTests */,
 				F5CC37BD1D829C4E009E7784 /* Products */,
+				F5C364451DD7AAF1004B3A52 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				F5CC37BC1D829C4E009E7784 /* blackbox.app */,
+				F5C364391DD78747004B3A52 /* blackboxTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +161,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F5C364381DD78747004B3A52 /* blackboxTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5C364421DD78747004B3A52 /* Build configuration list for PBXNativeTarget "blackboxTests" */;
+			buildPhases = (
+				F5C364351DD78747004B3A52 /* Sources */,
+				F5C364361DD78747004B3A52 /* Frameworks */,
+				F5C364371DD78747004B3A52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F5C3643F1DD78747004B3A52 /* PBXTargetDependency */,
+			);
+			name = blackboxTests;
+			productName = blackboxTests;
+			productReference = F5C364391DD78747004B3A52 /* blackboxTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F5CC37BB1D829C4E009E7784 /* blackbox */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F5CC37D31D829C4E009E7784 /* Build configuration list for PBXNativeTarget "blackbox" */;
@@ -143,6 +205,12 @@
 				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Peredovik Development";
 				TargetAttributes = {
+					F5C364381DD78747004B3A52 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = G5659EK6MC;
+						ProvisioningStyle = Automatic;
+						TestTargetID = F5CC37BB1D829C4E009E7784;
+					};
 					F5CC37BB1D829C4E009E7784 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = G5659EK6MC;
@@ -168,11 +236,19 @@
 			projectRoot = "";
 			targets = (
 				F5CC37BB1D829C4E009E7784 /* blackbox */,
+				F5C364381DD78747004B3A52 /* blackboxTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F5C364371DD78747004B3A52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5CC37BA1D829C4E009E7784 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -190,6 +266,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F5C364351DD78747004B3A52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5C3643C1DD78747004B3A52 /* MainScreenViewControllerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F5CC37B81D829C4E009E7784 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -203,7 +287,47 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F5C3643F1DD78747004B3A52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F5CC37BB1D829C4E009E7784 /* blackbox */;
+			targetProxy = F5C3643E1DD78747004B3A52 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		F5C364401DD78747004B3A52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = G5659EK6MC;
+				INFOPLIST_FILE = blackboxTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.peredovik.blackboxTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/blackbox.app/blackbox";
+			};
+			name = Debug;
+		};
+		F5C364411DD78747004B3A52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				DEVELOPMENT_TEAM = G5659EK6MC;
+				INFOPLIST_FILE = blackboxTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = org.peredovik.blackboxTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/blackbox.app/blackbox";
+			};
+			name = Release;
+		};
 		F5CC37D11D829C4E009E7784 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -319,6 +443,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F5C364421DD78747004B3A52 /* Build configuration list for PBXNativeTarget "blackboxTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5C364401DD78747004B3A52 /* Debug */,
+				F5C364411DD78747004B3A52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		F5CC37B71D829C4E009E7784 /* Build configuration list for PBXProject "blackbox" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
