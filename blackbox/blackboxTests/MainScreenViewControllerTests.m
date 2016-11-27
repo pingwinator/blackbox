@@ -7,8 +7,8 @@
 //
 
 #import <XCTest/XCTest.h>
-
 #import "MainScreenViewController.h"
+#import "NSData+AES256.h"
 
 @interface blackboxTests : XCTestCase
 {
@@ -23,17 +23,16 @@
 
 
 - (void)setUp {
+
     [super setUp];
-    // Put setup code here. This method is called before the invocation of each test method in the class.
     
     mainScreen = [[MainScreenViewController alloc] init];
     
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
+
     [super tearDown];
-    
     
 }
 
@@ -102,4 +101,25 @@
 }
 
 
+-(void)testNSDataExtention{
+
+    [mainScreen createKey];
+    
+    NSString *keyData = [mainScreen getKeyData];
+    
+    NSData *cipher = [keyData dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSData *cipherTest = [cipher AES256EncryptWithKey:keyData];
+
+    BOOL result = FALSE;
+    
+    if (cipherTest != nil){
+        result = TRUE;
+    }else{
+        result = FALSE;
+    }
+    
+    XCTAssertTrue(result, @"cipher sxtention is working");
+    
+}
 @end

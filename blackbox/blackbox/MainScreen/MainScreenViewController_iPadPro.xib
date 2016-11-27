@@ -51,6 +51,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="CUp-Fn-GXR">
                     <rect key="frame" x="360" y="647" width="304" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" identifier="storetokeychain"/>
                     <state key="normal" title="Store to keychain"/>
                     <connections>
                         <action selector="btnStoreToKeyChainTapped:" destination="-1" eventType="touchDown" id="dWI-aK-xqb"/>
@@ -59,6 +60,7 @@
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="P3D-Lc-vCQ">
                     <rect key="frame" x="360" y="707" width="304" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration" identifier="getvaluefromkeychain"/>
                     <state key="normal" title="Get value from KeyStore"/>
                     <connections>
                         <action selector="btnGetFromKeyChainTapped:" destination="-1" eventType="touchDown" id="67O-hH-sq5"/>

@@ -40,5 +40,7 @@ static const NSString *serviceName = @"RedQueenSample";
 -(NSString *)getNibNameForInit;
 -(BOOL *)getTouchIdValue;
 -(NSString *)getKeyData;
+-(NSString *)createKey;
 
+    
 @end

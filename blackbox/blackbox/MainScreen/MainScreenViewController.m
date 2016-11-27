@@ -45,7 +45,7 @@
     laContext = [[LAContext alloc] init];
 
     keyData = [[NSString alloc] init];
-    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -94,8 +94,6 @@
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:@"message" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageNotification:) name:@"message" object:nil];
-    
-    keyData = [self createKey];
 
     updateItem = [[NSMutableDictionary alloc] init];
     
@@ -190,10 +188,7 @@
         NSMutableDictionary *keychainItemData = [[NSMutableDictionary alloc] init];
         [keychainItemData setObject:(__bridge id)kSecClassGenericPassword forKey:(__bridge id)kSecClass];
         
-        NSData *dataPassword = [updateItem objectForKey:(__bridge id)kSecValueData];
-        NSString *passwordString = [[NSString alloc] initWithData:dataPassword encoding:NSUTF8StringEncoding];
-        
-        passwordString = keyData;
+        NSString *passwordString = keyData;
         
         [keychainItemData setObject:[passwordString dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
         [keychainItemData removeObjectForKey:(__bridge id)kSecClass];
@@ -205,6 +200,9 @@
 
         OSStatus initialWriteStatus = SecItemDelete((CFDictionaryRef) updateItem);
         NSLog(@"result secItemDeleted: %d", (int)initialWriteStatus);
+        
+        NSString *passwordString = keyData;
+        [updateItem setObject:[passwordString dataUsingEncoding:NSUTF8StringEncoding] forKey:(__bridge id)kSecValueData];
         
         initialWriteStatus = SecItemAdd((__bridge CFDictionaryRef) updateItem, nil);
         NSLog(@"result secItemAdded: %d", (int)initialWriteStatus);
@@ -273,13 +271,15 @@
     unsigned char buf[32];
     arc4random_buf(buf, sizeof(buf));
     
-     NSData *keyGenerated = [NSData dataWithBytes:buf length:sizeof(buf)];
+    NSData *keyGenerated = [NSData dataWithBytes:buf length:sizeof(buf)];
     
     if (keyGenerated == nil) {
         return nil;
     }
  
-    return [keyGenerated base64EncodedStringWithOptions:kNilOptions];
+    keyData = [keyGenerated base64EncodedStringWithOptions:kNilOptions];
+    
+    return keyData;
 }
 
 

@@ -13,6 +13,8 @@
 
 - (NSData *)AES256EncryptWithKey:(NSString *)key {
 
+    NSData *result = [[NSData alloc] init];
+    
     char keyPtr[kCCKeySizeAES256+1];
     bzero(keyPtr, sizeof(keyPtr));
     
@@ -31,11 +33,11 @@
                                           buffer, bufferSize,
                                           &numBytesEncrypted);
     if (cryptStatus == kCCSuccess) {
-        return [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
+        result = [NSData dataWithBytesNoCopy:buffer length:numBytesEncrypted];
     }
     
-    free(buffer);
-    return nil;
+//    free(buffer);
+    return result;
 }
 
 @end
